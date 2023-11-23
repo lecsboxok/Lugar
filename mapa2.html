@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #wazeMap {
+            width: 1000px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="wazeMap" src=""></iframe>
+
+
+    <script>
+        navigator.geolocation.getCurrentPosition(funciona, erro);
+
+        function funciona(pos) {
+            var la = pos.coords.latitude;
+            var lo = pos.coords.longitude;
+            urlLink = `https://embed.waze.com/iframe?zoom=12&lat=${la}&lon=${lo}`
+            document.getElementById('wazeMap').src = urlLink;
+        }
+
+        function erro () {
+            console.log('Não foi possível localizar');
+        }
+    </script>
+
+</body>
+</html>

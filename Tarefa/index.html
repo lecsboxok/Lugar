@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css&quot">
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js&quot"></script>
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+    <div id="map"></div>
+
+
+    <script>
+        var map = L.map('map').setView([0, 0], 13);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+
+        navigator.geolocation.getCurrentPosition(funciona, erro); //PODERIA USAR O watchPosition()
+        function funciona(pos) {
+            var la = pos.coords.latitude;
+            var lo = pos.coords.longitude;
+
+            var marker = L.marker([0, 0]).addTo(map);
+
+            L.Routing.control({
+                waypoints: [
+                    L.latLng(la, lo), //LATITUDE E LONGITUDE CAPTURADA NO NAVEGADOR DO USUÁRIO
+                    L.latLng(-23.55612052230916, -46.3136124) //LATITUDE E LONGITUDE DE DESTINO. (utilize o Senai Suzano como exemplo)
+                ]
+            }).addTo(map);
+
+        }
+
+        function erro() {
+            console.log('Não foi possível localizar');
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>
