@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -12,18 +12,114 @@
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js&quot"></script>
     <style>
-        #map {
-            height: 500px;
-            width: 100%;
+
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box;
         }
 
+        body {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        #header, #footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        #footer {
+            background-color: #A63856;
+        }
+
+        #footer h1 {
+            color: #f2f2f2;
+        }
+
+        h1 {
+            color: #A63856;
+        }
+
+        #map {
+            height: 100vh;
+            width: 50%;
+        }
+
+        input, textarea {
+            font: 400 2vh 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            border: 3px solid #E6E6E6;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f2f2f2;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        button {
+            font: 400 2.5vh 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            padding: 15px;
+            margin-top: 10px;
+            background-color: #E45B79;
+            color: #f2f2f2;
+        }
+
+        #form {
+            display: flex;
+            flex-direction: column;
+            width: 500px;
+            justify-content: center;
+            margin-left: 120px;
+        }
+
+        .form {
+            text-align: center;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* margin: 70px 0; */
+        }
+
+        h3 {
+            font: 600 3vh 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin-bottom: 20px;
+            color: #A63856;
+        }
+
+        #main {
+            display: flex;
+            align-items: center;
+        }
 
     </style>
 
 </head>
 
 <body>
-    <div id="map"></div>
+    <header id="header">
+        <h1>MAPA</h1>
+    </header>
+    <main id="main">
+        <div class="form">
+            <h3>Envie sua Mensagem</h3>
+            <form id="form">
+                <input type="text" placeholder="Nome">
+                <input type="email" placeholder="Email">
+                <textarea id="" cols="30" rows="10" placeholder="Mensagem"></textarea>
+                <button>Enviar</button>
+            </form>
+        </div>
+        <div id="map"></div>
+    </main>
+    <footer id="footer">
+        <h1>MAPA</h1>
+    </footer>
 
 
     <script>
